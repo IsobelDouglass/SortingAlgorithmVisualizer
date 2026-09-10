@@ -82,8 +82,14 @@ main {
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+#disclaimer {
+  font-size: 12px;
+  margin: 5px 0;
+  color: #555555a6;
 }
