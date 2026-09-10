@@ -1,4 +1,4 @@
-import * as animate from "./animation.js";
+import * as animate from "https://github.com/IsobelDouglass/SortingAlgorithmVisualizer/blob/main/animation.js";
 
 let output = [];
 

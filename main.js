@@ -1,5 +1,5 @@
-import * as elements from "./import.js";
-import * as functions from "./functions.js";
+import * as elements from "https://github.com/IsobelDouglass/SortingAlgorithmVisualizer/blob/main/import.js";
+import * as functions from "https://github.com/IsobelDouglass/SortingAlgorithmVisualizer/blob/main/functions.js";
 
 elements.resetButton.addEventListener("click", () => {
     functions.renderArray(elements.displayContainer, functions.output);
