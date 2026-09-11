@@ -1,8 +1,21 @@
 import * as elements from "./import.js";
 import * as functions from "./functions.js";
 
+let isRunning = false;
+let runID = 0;
+let currentRunID = 0;
+
+// Callback to check if current sort should continue
+const shouldContinue = (passedRunID) => passedRunID === currentRunID;
+
 elements.resetButton.addEventListener("click", () => {
-    functions.renderArray(elements.displayContainer, functions.output);
+    // Immediately pause and halt any running sort
+    isRunning = false;
+    runID++;
+    currentRunID = 0; // Reset currentRunID so shouldContinue returns false
+    // Reset array to original
+    array = [...originalArray];
+    functions.renderArray(elements.displayContainer, array);
 });
 
 let array;
@@ -39,19 +52,28 @@ elements.generateBtn.addEventListener("click", () => {
 });
 
 elements.selectionSortBtn.addEventListener("click", async () => {
+    isRunning = true;
+    currentRunID = ++runID;
     array = [...originalArray];
     functions.renderArray(container, array);
-    await functions.selectionSort(array, container, functions.renderArray, 2000 - elements.speedSlider.value);
+    await functions.selectionSort(array, container, functions.renderArray, 2000 - elements.speedSlider.value, currentRunID, shouldContinue);
+    if (currentRunID === runID) isRunning = false;
 });
 
 elements.insertionSortBtn.addEventListener("click", async () => {
+    isRunning = true;
+    currentRunID = ++runID;
     array = [...originalArray];
     functions.renderArray(container, array);
-    await functions.insertionSort(array, container, functions.renderArray, 2000 - elements.speedSlider.value);
+    await functions.insertionSort(array, container, functions.renderArray, 2000 - elements.speedSlider.value, currentRunID, shouldContinue);
+    if (currentRunID === runID) isRunning = false;
 });
 
 elements.bubbleSortBtn.addEventListener("click", async () => {
+    isRunning = true;
+    currentRunID = ++runID;
     array = [...originalArray];
     functions.renderArray(container, array);
-    await functions.bubbleSort(array, container, functions.renderArray, 2000 - elements.speedSlider.value);
+    await functions.bubbleSort(array, container, functions.renderArray, 2000 - elements.speedSlider.value, currentRunID, shouldContinue);
+    if (currentRunID === runID) isRunning = false;
 });

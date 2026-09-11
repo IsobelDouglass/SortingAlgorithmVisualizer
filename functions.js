@@ -2,6 +2,17 @@ import * as animate from "./animation.js";
 
 let output = [];
 
+async function pause(paused) {
+    while (paused) {
+        await sleep(50);
+    }
+}
+
+async function halt(paused, runID, currentRunID) {
+    await pause(paused);
+    if (runID !== currentRunID) return;
+}
+
 function generateArray(num) {
     output = []; // Clear the output array before generating a new one
     for (let j = 0; j < num; j++) {
@@ -22,11 +33,13 @@ function renderArray(element, array) {
     return element;
 }
 
-async function selectionSort(array, container, render, speed) {
+async function selectionSort(array, container, render, speed, runID, shouldContinue) {
     let n = array.length;
     for (let i = 0; i < n; i++) {
+        if (!shouldContinue(runID)) return array;
         let minIndex = i;
         for (let j = i + 1; j < n; j++) {
+            if (!shouldContinue(runID)) return array;
             if (array[j] < array[minIndex]) {
                 minIndex = j;
             }
@@ -69,10 +82,11 @@ async function insertionSort(array, container, render, speed) {
 }
 */
 
-async function gnomeSort(array, container, render, speed) {
+async function gnomeSort(array, container, render, speed, runID, shouldContinue) {
     let index = 0;
     let n = array.length;
     while (index < n) {
+        if (!shouldContinue(runID)) return array;
         if (index === 0) {
             index++;
         }
@@ -93,10 +107,12 @@ async function gnomeSort(array, container, render, speed) {
     return array;
 }
 
-async function bubbleSort(array, container, render, speed) {
+async function bubbleSort(array, container, render, speed, runID, shouldContinue) {
     let n = array.length;
     for (let i = 0; i < n - 1; i++) {
+        if (!shouldContinue(runID)) return array;
         for (let j = 0; j < n - i - 1; j++) {
+            if (!shouldContinue(runID)) return array;
             if (array[j] > array[j + 1]) {
                 [array[j], array[j + 1]] = [array[j + 1], array[j]];
                 render(container, array);
@@ -113,4 +129,4 @@ async function bubbleSort(array, container, render, speed) {
 }
 
 
-export { generateArray, selectionSort, bubbleSort, gnomeSort as insertionSort, renderArray, output };
+export { halt, generateArray, selectionSort, bubbleSort, gnomeSort as insertionSort, renderArray, output };

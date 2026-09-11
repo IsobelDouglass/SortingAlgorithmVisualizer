@@ -4,6 +4,12 @@ make it so that there is the number value of the value visible below the bars (f
 
 get rid of color coded blocks and make the algo highlight the blocks theyre working on / moving. Change the colors into grayscale
 
+
+
+
+
+
+
 list of sorting algorithms
 function quickSort(array, start, end) {
   if (start === undefined) {
