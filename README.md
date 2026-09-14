@@ -1,10 +1,10 @@
 # Sorting Algorithm Visualizer
 
-This is a browser-based visualizer for classic sorting algorithms, built with vanilla JavaScript, HTML, and CSS.
+This is a browser-based visualizer to display classic sorting algorithms, built with vanilla JavaScript, HTML, and CSS.
 
 [Live demo](https://isobeldouglass.github.io/SortingAlgorithmVisualizer/)
 
-Create a random array of bars and observe how they are sorted in real time, with a subtle click playing on each comparison/swap.
+Create a random array of bars and observe as they are sorted in real time, with a subtle click playing on each comparison/swap.
 
 ## Features
 
@@ -13,11 +13,11 @@ Create a random array of bars and observe how they are sorted in real time, with
 - Reset button to restore the last-generated array so you can compare algorithms on the same data
 - Web Audio API tones on each swap, no audio files
 
-Heads up: the "Insertion Sort" button is currently running gnome sort — there's a real insertion sort written in `functions.js` but it's commented out because of an animation bug I haven't fixed yet. Noted in the footer of the app too.
+Note: the "Insertion Sort" button is currently running gnome sort. There is a real insertion sort written in `functions.js` but it's commented out because of an animation bug yet to be fixed. Also noted in app.
 
 ## Files
 
-- `functions.js` — array generation, rendering, and the sorts themselves
+- `functions.js` — array generation, rendering, and the sorting itself
 - `animation.js` — the swap sound (Web Audio, sine wave)
 - `main.js` — button/slider wiring, and a runID system so restarting or resetting mid-sort doesn't race with the animation still playing
 - `import.js` — DOM element references
