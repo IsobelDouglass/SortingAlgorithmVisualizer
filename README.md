@@ -13,7 +13,7 @@ Create a random array of bars and observe how they are sorted in real time, with
 - **Reset** to restore the array to its last-generated state and re-run a different algorithm on the same data
 - Lightweight audio feedback on each swap, generated with the Web Audio API (no audio files)
 
-> **Known limitation:** the "Insertion Sort" button currently runs a gnome sort under the hood — a true insertion sort is implemented in `functions.js` but is commented out because of an animation bug. This is flagged in the app itself and is the main item on the project's to-do list.
+> **Note:** the "Insertion Sort" button currently runs a gnome sort under the hood — a true insertion sort is implemented in `functions.js` but is commented out because of an animation bug. This is flagged in the app itself and is the main item on the project's to-do list.
 
 ## How it's built
 
